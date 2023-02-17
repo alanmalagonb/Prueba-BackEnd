@@ -9,7 +9,7 @@ exports.getCompetitors = (req, res, next) => {
         INNER JOIN stations_brand on stations_brands.cre_id=stations.cre_id \
         INNER JOIN brands on stations_brands.id_brand = brands.id \
         where stations.cre_id=?';
-        const rows = await pool.query(sqlQuery,stationId);
+        const rows = pool.query(sqlQuery,stationId);
         myStation = rows;
         res.status(200).json(rows);
     } catch(error){
